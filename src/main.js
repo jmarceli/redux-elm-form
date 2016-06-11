@@ -1,6 +1,15 @@
-import run from './boilerplate';
+import boot from './boilerplate';
 
-import view from './hello-world/view';
-import updater from './hello-world/updater';
+const run = boot('app');
 
-run('app', view, updater);
+const start = () => run(
+  require('./hello-world/view').default,
+  require('./hello-world/updater').default
+);
+
+if (module.hot) {
+  module.hot.accept('./hello-world/view', start);
+  module.hot.accept('./hello-world/updater', start);
+}
+
+start();

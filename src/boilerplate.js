@@ -4,21 +4,29 @@ import { createStore, compose } from 'redux';
 import { Provider, connect } from 'react-redux';
 import reduxElm from 'redux-elm';
 
-export default (containerDomId, View, updater) => {
+export default (containerDomId) => {
   const storeFactory = compose(
     reduxElm,
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )(createStore);
 
-  const store = storeFactory(updater);
+  let store;
 
-  const ConnectedView = connect(appState => ({
-    model: appState
-  }))(View);
+  return (View, updater) => {
+    if (!store) {
+      store = storeFactory(updater);
+    } else {
+      store.replaceReducer(updater);
+    }
 
-  render((
-    <Provider store={store}>
-      <ConnectedView />
-    </Provider>
-  ), document.getElementById(containerDomId));
+    const ConnectedView = connect(appState => ({
+      model: appState
+    }))(View);
+
+    render((
+      <Provider store={store}>
+        <ConnectedView />
+      </Provider>
+    ), document.getElementById(containerDomId));
+  }
 }
