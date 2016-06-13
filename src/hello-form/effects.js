@@ -19,7 +19,8 @@ export const submitForm = (data, resolve, reject) => fetch(url, {
     console.log(response);
     if (response.status > 400) {
       // redux-form expects Promise reject to set submitFailed to true
-      reject({firstName: 'invalid'}); // mimic invalid firstName field
+      //reject({firstName: 'invalid'}); // mimic invalid firstName field
+      throw new SubmissionError({firstName: 'invalid'});
     } else {
       let json = response.json();
       // redux-form expects Promise resolution to set submitting state to false
