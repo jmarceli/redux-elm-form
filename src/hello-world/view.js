@@ -1,10 +1,14 @@
 import React from 'react';
-import { view } from 'redux-elm';
+import { view, forwardTo } from 'redux-elm';
+import { reduxForm } from 'redux-form';
 
-export default view(({ model, dispatch }) => {
-  if (model.greeted) {
-    return <div>Hello World!</div>;
-  } else {
-    return <button onClick={() => dispatch({ type: 'SayHi' })}>Say Hi</button>;
-  }
-});
+import NestedForm from '../hello-form/view';
+
+export default view(({ model, dispatch }) => (
+  <div>
+    Hello World!<br />
+    Form example (built with redux-form) below:<br />
+    <hr />
+    <NestedForm model={model.helloForm} dispatch={forwardTo(dispatch, 'HelloForm')} />
+  </div>
+));

@@ -1,6 +1,9 @@
 {
   "name": "redux-elm-skeleton",
+  "keywords": ["redux-elm", "redux-form"],
+  "description": "Example of using redux-form with redux-elm",
   "version": "0.1.0",
+  
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --port 3000 --hot --content-base ./",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
@@ -29,8 +32,13 @@
     "react-redux": "^4.0.0",
     "redux": "^3.3.1",
     "redux-elm": "^2.0.10",
+    "redux-form": "^5.2.5",
     "redux-saga": "^0.10.3"
   },
-  "author": "Tomas Weiss <tomasw@salsitasoft.com>",
+  "author": "Jan Grzegorowski",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jmarceli/redux-elm-form.git"
+  },
   "license": "MIT"
 }

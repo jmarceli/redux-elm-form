@@ -1,8 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore, compose } from 'redux';
+import { createStore, compose, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
 import reduxElm from 'redux-elm';
+
+import { reducer as formReducer } from 'redux-form';
 
 export default (containerDomId) => {
   const storeFactory = compose(
@@ -14,9 +16,15 @@ export default (containerDomId) => {
 
   return (View, updater) => {
     if (!store) {
-      store = storeFactory(updater);
+      store = storeFactory(combineReducers({
+        root: updater,
+        form: formReducer
+      }));
     } else {
-      store.replaceReducer(updater);
+      store.replaceReducer(combineReducers({
+        root: updater,
+        form: formReducer
+      }));
     }
 
     const ConnectedView = connect(appState => ({

@@ -1,9 +1,11 @@
 import { Updater } from 'redux-elm';
 
-const initialModel = {
-  greeted: false
-};
+import helloFormUpdater, { init as helloFormInit } from '../hello-form/updater';
+
+const initialModel = () => ({
+  helloForm: helloFormInit()
+});
 
 export default new Updater(initialModel)
-  .case('SayHi', model => ({ ...model, greeted :true }))
+  .case('HelloForm', (model, action) => ({ ...model, helloForm: helloFormUpdater(model.helloForm, action) }))
   .toReducer();
