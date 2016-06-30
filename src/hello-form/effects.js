@@ -4,6 +4,7 @@ require('isomorphic-fetch');
 // response.body = request.body
 // Inside "Reponse Builder" body in order to get echo service
 const url = 'http://putsreq.com/tMWywrJmJsOX4lbvND9b';
+// Visit http://putsreq.com/tMWywrJmJsOX4lbvND9b/inspect to view your requests 
 // use some non-existing url to see errors
 //const url = 'http://localhost:3000/404';
 
