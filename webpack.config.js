@@ -9,6 +9,7 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   entry: [
+    // polyfill is required by generator functions in src/hello-form/updater.js
     'babel-polyfill',
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
