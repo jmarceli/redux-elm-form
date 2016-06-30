@@ -25,6 +25,5 @@ export const init = () => ({
 });
 
 export default new Updater(init(), saga)
-  .case('Submit', model => ({ ...model, isSubmitting: true }))
   .case('Submitted', (model, { result }) => ({ ...model, isSubmitting: false }))
   .toReducer();
