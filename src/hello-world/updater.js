@@ -6,6 +6,6 @@ const initialModel = () => ({
   helloForm: helloFormInit()
 });
 
-export default new Updater(initialModel)
+export default new Updater(initialModel())
   .case('HelloForm', (model, action) => ({ ...model, helloForm: helloFormUpdater(model.helloForm, action) }))
   .toReducer();

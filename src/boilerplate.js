@@ -28,7 +28,7 @@ export default (containerDomId) => {
     }
 
     const ConnectedView = connect(appState => ({
-      model: appState
+      model: appState.root
     }))(View);
 
     render((
