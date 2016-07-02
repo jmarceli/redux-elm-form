@@ -14,12 +14,13 @@ let Form = (props) => {
       Is submitting: <strong>{ submitting? 'Yes' : 'No' }</strong>
         <Field name="firstName" component={firstName =>
           <div>
+            First Name ({firstName.visited? 'visited' : 'not visited'})
             <input type="text" {...firstName}/>
           </div>
         }/>
         <Field name="lastName" component={lastName =>
           <div>
-            <input type="text" {...lastName}/>
+            Last Name <input type="text" {...lastName}/>
           </div>
         }/>
       <button type="submit" disabled={submitting}>Submit</button>
