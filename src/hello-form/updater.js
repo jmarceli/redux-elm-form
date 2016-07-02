@@ -22,9 +22,9 @@ function* saga() {
 }
 
 export const init = () => ({
-  isSubmitting: false
+  response: false
 });
 
 export default new Updater(init(), saga)
-  .case('Submitted', (model, { result }) => ({ ...model, isSubmitting: false }))
+  .case('Submitted', (model, { result }) => ({ ...model, response: result }))
   .toReducer();

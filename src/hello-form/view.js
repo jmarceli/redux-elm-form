@@ -18,22 +18,35 @@ class NestedForm extends React.Component {
     // props from redux-form (divided into two lines for readability
     const { fields: {firstName, lastName, email} } = this.props;
     const { submitting, handleSubmit, submitFailed } = this.props;
+    const { model } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(submit)}>
-        <legend>Redux-form</legend>
-        {submitFailed? <div><strong>Submitting failed</strong></div> : ''}
-        Is submitting: <strong>{ submitting? 'Yes' : 'No' }</strong>
-        <div>
-          <label>First Name (<small>{ firstName.visited? 'visited' : 'not visited' }</small>)</label>
-          <input type="text" placeholder="First Name" {...firstName}/>
-        </div>
-        <div>
-          <label>Last Name</label>
-          <input type="text" placeholder="Last Name" {...lastName}/>
-        </div>
-        <button type="submit" disabled={submitting}>Submit</button>
-      </form>
+      <div>
+        <form onSubmit={handleSubmit(submit)}>
+          <legend>Redux-form</legend>
+          {submitFailed? <div><strong>Submitting failed</strong></div> : ''}
+          Is submitting: <strong>{ submitting? 'Yes' : 'No' }</strong>
+          <div>
+            <label>First Name (<small>{ firstName.visited? 'visited' : 'not visited' }</small>)</label>
+            <input type="text" placeholder="First Name" {...firstName}/>
+          </div>
+          <div>
+            <label>Last Name</label>
+            <input type="text" placeholder="Last Name" {...lastName}/>
+          </div>
+          <button type="submit" disabled={submitting}>Submit</button>
+        </form>
+        {model.response
+        ? <div>
+            <h4>Response received (<small>by default it is just echo response</small>)</h4>
+            <div>
+              <code>
+                {JSON.stringify(model.response)}
+              </code>
+            </div>
+          </div>
+        : ''}
+      </div>
     );
   }
 }
