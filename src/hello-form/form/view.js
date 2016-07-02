@@ -1,8 +1,9 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 
+// Form as stateless function
+// it can't be "const" because of later reduxForm() binding
 let Form = (props) => {
-  // props from redux-form (divided into two lines for readability
   const { submitting, handleSubmit, submitFailed, submit } = props;
 
   return (
