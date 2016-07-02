@@ -1,7 +1,5 @@
 import React from 'react';
-import { view } from 'redux-elm';
 import { reduxForm, Field } from 'redux-form';
-import { connect } from 'react-redux';
 
 let Form = (props) => {
   // props from redux-form (divided into two lines for readability
