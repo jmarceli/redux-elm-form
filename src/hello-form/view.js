@@ -2,7 +2,7 @@ import React from 'react';
 import { view } from 'redux-elm';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import Form from '../form/view';
+import Form from './form/view';
 
 // Wrap React Component in standard redux-elm stateless function
 export default view(({ model, dispatch }) => {
