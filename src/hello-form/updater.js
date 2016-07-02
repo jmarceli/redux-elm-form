@@ -12,6 +12,7 @@ function* submitForm(eventData) {
   // form data has to be attached to the event because form model is detached
   // so it can't be accessed from component model
   const result = yield call(Effects.submitForm, eventData.data, eventData.resolve, eventData.reject);
+  // trigger 'Submitted' action after receiving results
   yield put({ type: 'Submitted', result });
 }
 
