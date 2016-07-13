@@ -10,6 +10,8 @@ Because `redux-form` breaks Elm Architecture it is not possible to get form stat
 
 Of course form name has to be unique which **will cause trouble** if you try to have multiple instances of form component.
 
+For Redux-form v6 example checkout `redux_form_v6` branch.
+
 ## Usage
 
 ```
